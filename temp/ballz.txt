@@ -1,0 +1,537 @@
+const int skull_cnt = 139;
+vec4 skull[skull_cnt] = vec4[](
+vec4(-0.215,0.649,0.557,0.030),
+vec4(-0.172,0.262,0.586,0.035),
+vec4(-0.385,0.567,0.450,0.045),
+vec4(-0.048,0.466,0.780,0.040),
+vec4(-0.338,0.471,0.194,0.025),
+vec4(-0.115,0.469,0.594,0.100),
+vec4(-0.050,0.739,-0.187,0.450),
+vec4(-0.048,0.741,0.710,0.020),
+vec4(0.001,0.466,0.803,0.040),
+vec4(-0.329,0.410,0.319,0.025),
+vec4(-0.023,0.097,0.803,0.050),
+vec4(-0.296,0.783,0.396,0.045),
+vec4(-0.041,0.530,0.772,0.025),
+vec4(-0.100,0.100,0.755,0.050),
+vec4(-0.249,0.775,0.399,0.045),
+vec4(-0.030,0.763,0.711,0.025),
+vec4(-0.244,0.125,0.488,0.040),
+vec4(-0.328,0.733,0.472,0.030),
+vec4(-0.192,0.703,0.405,0.045),
+vec4(-0.080,0.680,0.687,0.030),
+vec4(-0.132,0.648,0.576,0.050),
+vec4(-0.041,0.556,0.772,0.025),
+vec4(-0.395,0.542,0.349,0.025),
+vec4(-0.021,0.613,-0.231,0.450),
+vec4(-0.051,0.913,0.553,0.035),
+vec4(-0.021,0.561,0.515,0.150),
+vec4(-0.338,0.463,0.241,0.025),
+vec4(0.006,0.559,0.718,0.025),
+vec4(-0.202,0.107,0.600,0.045),
+vec4(-0.094,0.648,0.692,0.030),
+vec4(-0.108,0.923,0.540,0.035),
+vec4(-0.126,0.561,0.373,0.175),
+vec4(-0.153,0.590,0.546,0.085),
+vec4(-0.095,0.591,0.731,0.025),
+vec4(-0.296,0.853,0.449,0.030),
+vec4(-0.301,0.558,0.542,0.045),
+vec4(-0.168,0.947,0.412,0.100),
+vec4(-0.330,0.765,0.462,0.025),
+vec4(-0.291,0.480,0.489,0.050),
+vec4(-0.063,0.485,0.773,0.040),
+vec4(-0.107,0.428,0.748,0.035),
+vec4(0.006,0.691,0.565,0.110),
+vec4(-0.341,0.490,0.153,0.035),
+vec4(-0.004,0.782,0.510,0.085),
+vec4(-0.026,0.837,-0.067,0.450),
+vec4(-0.232,0.680,0.538,0.030),
+vec4(-0.292,0.347,0.497,0.050),
+vec4(-0.391,0.560,0.418,0.035),
+vec4(-0.353,0.599,0.480,0.045),
+vec4(-0.090,0.574,0.630,0.065),
+vec4(-0.228,0.116,0.542,0.040),
+vec4(-0.311,0.783,0.422,0.045),
+vec4(-0.194,0.687,0.563,0.025),
+vec4(-0.067,0.478,0.675,0.100),
+vec4(-0.072,0.441,0.775,0.035),
+vec4(-0.167,0.927,0.510,0.045),
+vec4(-0.333,0.430,0.291,0.025),
+vec4(-0.314,0.368,0.383,0.038),
+vec4(-0.241,0.896,0.378,0.100),
+vec4(-0.157,0.252,0.639,0.035),
+vec4(-0.338,0.448,0.264,0.025),
+vec4(-0.249,0.703,0.417,0.045),
+vec4(-0.156,0.702,0.578,0.025),
+vec4(-0.078,0.648,0.634,0.060),
+vec4(-0.168,0.102,0.654,0.050),
+vec4(-0.017,0.539,0.772,0.025),
+vec4(-0.293,0.510,0.549,0.045),
+vec4(-0.376,0.513,0.238,0.025),
+vec4(-0.094,0.556,0.704,0.030),
+vec4(-0.276,0.677,0.513,0.025),
+vec4(-0.078,0.755,0.611,0.025),
+vec4(-0.320,0.688,0.435,0.045),
+vec4(-0.029,0.232,0.801,0.035),
+vec4(-0.065,0.713,0.687,0.030),
+vec4(-0.020,0.941,0.128,0.400),
+vec4(-0.183,0.262,0.531,0.035),
+vec4(-0.358,0.499,0.198,0.025),
+vec4(-0.397,0.550,0.382,0.030),
+vec4(-0.073,0.687,0.716,0.020),
+vec4(-0.313,0.670,0.478,0.045),
+vec4(-0.256,0.558,0.565,0.045),
+vec4(-0.310,0.732,0.434,0.045),
+vec4(0.004,0.874,0.541,0.060),
+vec4(-0.028,0.743,0.633,0.050),
+vec4(-0.356,0.558,0.528,0.045),
+vec4(-0.089,0.198,0.570,0.100),
+vec4(-0.081,0.657,0.713,0.020),
+vec4(-0.012,0.571,0.772,0.025),
+vec4(-0.005,0.793,0.728,0.025),
+vec4(-0.383,0.522,0.274,0.025),
+vec4(-0.391,0.533,0.311,0.025),
+vec4(-0.305,0.703,0.492,0.025),
+vec4(-0.075,0.237,0.781,0.035),
+vec4(-0.231,0.910,0.485,0.040),
+vec4(-0.026,0.573,0.660,0.025),
+vec4(-0.242,0.578,0.500,0.100),
+vec4(-0.061,0.705,0.607,0.050),
+vec4(-0.325,0.391,0.348,0.025),
+vec4(-0.128,0.947,0.426,0.100),
+vec4(0.000,0.794,0.672,0.050),
+vec4(-0.276,0.655,0.480,0.045),
+vec4(0.009,0.564,0.679,0.025),
+vec4(-0.101,0.492,0.665,0.085),
+vec4(0.006,0.620,0.646,0.025),
+vec4(-0.109,0.718,0.593,0.030),
+vec4(-0.160,0.411,0.656,0.035),
+vec4(-0.381,0.539,0.476,0.045),
+vec4(-0.308,0.800,0.448,0.030),
+vec4(-0.064,0.163,0.650,0.100),
+vec4(-0.028,0.756,0.665,0.040),
+vec4(-0.023,0.150,0.784,0.050),
+vec4(-0.036,0.433,0.795,0.035),
+vec4(0.006,0.587,0.669,0.025),
+vec4(-0.316,0.499,0.060,0.100),
+vec4(-0.001,0.498,0.764,0.040),
+vec4(-0.107,0.236,0.735,0.035),
+vec4(-0.053,0.789,0.612,0.025),
+vec4(-0.088,0.626,0.722,0.025),
+vec4(-0.139,0.418,0.704,0.035),
+vec4(-0.263,0.178,0.479,0.040),
+vec4(-0.178,0.408,0.618,0.035),
+vec4(-0.279,0.283,0.489,0.050),
+vec4(-0.130,0.238,0.685,0.035),
+vec4(-0.060,0.715,0.713,0.020),
+vec4(-0.137,0.104,0.712,0.050),
+vec4(-0.090,0.569,0.742,0.025),
+vec4(-0.020,0.941,0.128,0.400),
+vec4(-0.059,1.016,0.322,0.200),
+vec4(-0.064,0.101,0.785,0.050),
+vec4(-0.301,0.331,0.430,0.050),
+vec4(-0.178,0.173,0.529,0.085),
+vec4(-0.193,0.396,0.580,0.035),
+vec4(-0.069,0.561,0.761,0.025),
+vec4(0.000,0.834,0.625,0.050),
+vec4(-0.272,0.890,0.464,0.035),
+vec4(-0.268,0.222,0.480,0.045),
+vec4(-0.021,0.941,0.383,0.165),
+vec4(-0.094,0.605,0.692,0.030),
+vec4(-0.030,0.170,0.719,0.100)
+);
+
+
+const int tentacle_cnt = 82;
+vec4 tentacle[tentacle_cnt] = vec4[](
+vec4(0.753,0.574,0.853,0.020),
+vec4(0.719,0.579,0.904,0.020),
+vec4(0.810,0.477,0.859,0.020),
+vec4(0.810,0.473,0.925,0.020),
+vec4(0.885,0.358,0.874,0.023),
+vec4(0.858,0.413,0.815,0.023),
+vec4(0.955,0.318,0.744,0.028),
+vec4(0.893,0.386,0.720,0.028),
+vec4(0.696,0.534,0.859,0.074),
+vec4(0.752,0.427,0.885,0.085),
+vec4(0.815,0.327,0.822,0.097),
+vec4(0.874,0.285,0.709,0.108),
+vec4(0.037,0.273,0.417,0.143),
+vec4(0.371,0.341,0.145,0.042),
+vec4(0.699,0.694,0.762,0.014),
+vec4(0.703,0.637,0.818,0.020),
+vec4(0.873,0.369,0.558,0.030),
+vec4(0.967,0.318,0.566,0.030),
+vec4(0.815,0.318,0.402,0.030),
+vec4(0.909,0.318,0.374,0.030),
+vec4(0.788,0.286,0.195,0.034),
+vec4(0.725,0.306,0.302,0.034),
+vec4(0.613,0.315,0.126,0.042),
+vec4(0.571,0.314,0.273,0.042),
+vec4(0.593,0.813,0.685,0.023),
+vec4(0.620,0.795,0.664,0.028),
+vec4(0.652,0.754,0.669,0.034),
+vec4(0.681,0.708,0.688,0.040),
+vec4(0.679,0.657,0.725,0.051),
+vec4(0.677,0.600,0.786,0.063),
+vec4(0.885,0.266,0.566,0.110),
+vec4(0.858,0.207,0.392,0.127),
+vec4(0.726,0.174,0.246,0.144),
+vec4(0.536,0.192,0.185,0.161),
+vec4(0.354,0.198,0.187,0.169),
+vec4(0.133,0.189,0.224,0.186),
+vec4(-0.096,0.858,0.569,0.025),
+vec4(-0.106,0.770,0.595,0.025),
+vec4(-0.340,1.216,0.758,0.013),
+vec4(-0.329,1.153,0.735,0.018),
+vec4(-0.295,1.073,0.734,0.018),
+vec4(-0.350,1.075,0.761,0.018),
+vec4(-0.299,0.973,0.744,0.018),
+vec4(-0.344,0.953,0.773,0.018),
+vec4(-0.309,0.845,0.722,0.020),
+vec4(-0.263,0.900,0.701,0.020),
+vec4(-0.226,0.785,0.674,0.025),
+vec4(-0.194,0.866,0.649,0.025),
+vec4(-0.444,1.132,0.828,0.020),
+vec4(-0.449,1.165,0.815,0.025),
+vec4(-0.444,1.200,0.791,0.030),
+vec4(-0.413,1.214,0.751,0.035),
+vec4(-0.375,1.204,0.721,0.045),
+vec4(-0.360,1.148,0.698,0.055),
+vec4(-0.353,1.072,0.703,0.065),
+vec4(-0.355,0.967,0.702,0.075),
+vec4(-0.318,0.869,0.645,0.085),
+vec4(-0.232,0.813,0.586,0.095),
+vec4(-0.148,0.795,0.521,0.100),
+vec4(0.013,0.343,0.788,0.025),
+vec4(-0.243,0.694,0.893,0.013),
+vec4(-0.280,0.650,0.915,0.018),
+vec4(-0.249,0.591,0.940,0.018),
+vec4(-0.299,0.584,0.966,0.018),
+vec4(-0.208,0.503,0.933,0.018),
+vec4(-0.232,0.481,0.980,0.018),
+vec4(-0.162,0.382,0.951,0.020),
+vec4(-0.152,0.437,0.902,0.020),
+vec4(-0.072,0.343,0.896,0.025),
+vec4(-0.086,0.414,0.841,0.025),
+vec4(-0.126,0.597,0.886,0.020),
+vec4(-0.134,0.624,0.867,0.025),
+vec4(-0.157,0.653,0.851,0.030),
+vec4(-0.200,0.683,0.842,0.035),
+vec4(-0.252,0.673,0.855,0.045),
+vec4(-0.288,0.632,0.870,0.055),
+vec4(-0.299,0.563,0.910,0.065),
+vec4(-0.262,0.461,0.916,0.075),
+vec4(-0.196,0.369,0.878,0.085),
+vec4(-0.107,0.330,0.811,0.095),
+vec4(-0.038,0.320,0.729,0.100),
+vec4(0.032,0.320,0.617,0.110)
+);
+
+
+
+
+
+const float epsilon = 0.000001;
+const float bigf = 1000000.0;
+const float exposure = 0.9;
+const float planeDistance = 0.1;
+const float cameraDistance = 2.0;
+const float planeScale = 0.08;
+const vec3 camPos = vec3(0.8, 1.2, cameraDistance);
+const vec3 target = vec3(0.0, 0.65, 0.75);
+const int max_depth = 10;
+vec4 light0 = vec4(0.0, 5.0, 0.0, 2.0);
+const int focalBlurSteps = 2;
+const float focalBlurStep = 0.01;
+
+
+
+bool Plane(vec3 rayOrigin, vec3 rayDir, vec4 plane, out vec4 p)
+{ 
+    if (abs(dot(plane.xyz, rayDir)) < epsilon) return false;
+    
+	float t = -(dot(plane.xyz, rayOrigin) - plane.w) / dot(plane.xyz, rayDir);
+    p.xyz = rayOrigin + t * rayDir;
+    p.w = t;
+    
+    if (t < 0.0) return false;
+    
+    return true;
+}
+
+
+bool Triangle(vec3 rayOrigin, vec3 rayDir, vec3 v0, vec3 v1, vec3 v2, out vec4 p)
+{
+    vec3 v0v1 = v1 - v0; 
+    vec3 v0v2 = v2 - v0; 
+    vec3 pvec = cross(rayDir, v0v2); 
+    float det = dot(v0v1, pvec); 
+	float u, v, t;
+    
+    if (abs(det) < epsilon) return false;
+    
+    float invDet = 1.0 / det; 
+ 
+    vec3 tvec = rayOrigin - v0;
+    u = dot(tvec, pvec) * invDet; 
+    if (u < 0.0 || u > 1.0) return false; 
+ 
+    vec3 qvec = cross(tvec, v0v1); 
+    v = dot(rayDir, qvec) * invDet;
+    if (v < 0.0 || u + v > 1.0) return false; 
+ 
+    t = dot(v0v2, qvec) * invDet;
+    
+    if (t < 0.0) return false;
+    
+    p.xyz = rayOrigin + t * rayDir;
+    p.w = t;
+    
+    return true; 
+}
+
+
+bool Sphere(vec3 rayOrigin, vec3 rayDir, vec4 sph, out vec4 p, out vec3 n)
+{
+    vec3 r2s = sph.xyz - rayOrigin;
+    float r2 = sph.w * sph.w;
+    float d1 = dot(rayDir, r2s);
+    if (d1 < 0.0) return false;
+    float d2 = dot(r2s, r2s) - d1 * d1;
+    if (d2 > r2) return false;
+    float d3 = sqrt(r2 - d2);
+    float t = d1 - d3;
+    //if (t < 0.0) t = d1 + d3;
+    if (t < 0.0) return false;
+    p.xyz = rayOrigin + t * rayDir;
+    p.w = t;
+    n = normalize(p.xyz - sph.xyz);
+    return true;
+}
+
+
+
+float sphOcclusion(vec3 pos, vec3 nor, vec4 sph)
+{
+    vec3  di = sph.xyz - pos;
+    float l  = length(di);    
+    float nl = dot(nor,di/l);
+    float h  = l/sph.w;
+    float h2 = h*h;
+    float k2 = 1.0 - h2*nl*nl;
+
+    float res = max(0.0,nl)/h2;
+    if( k2 > 0.0 ) 
+    {
+		res = pow( clamp(0.5*(nl*h+1.0)/h2,0.0,1.0), 1.5 );
+    }
+
+    return res;
+}
+
+
+float occlusion(vec3 p, vec3 n, int si, int ti)
+{
+ 	float o = 0.0;
+    
+    for (int i = 0; i < skull_cnt; i++)
+    {
+        if (i == si) continue;
+        o += sphOcclusion(p, n, skull[i]);
+        o += sphOcclusion(p, n, skull[i] * vec4(-1.0, 1.0, 1.0, 1.0));
+    }
+    
+    for (int i = 0; i < tentacle_cnt; i++)
+    {
+        if (i == ti) continue;
+        o += sphOcclusion(p, n, tentacle[i]);
+    }
+
+    return 1.0 - o * 0.2;
+}
+
+
+bool scene(vec3 rayOrigin, vec3 rayDir, out vec4 p, out vec3 n, out vec4 color)
+{
+	bool hit = false;
+    p = vec4(0.0, 0.0, 0.0, bigf);
+    
+    // floor plane
+    {
+    	vec4 p2;
+        
+        if (Plane(rayOrigin, rayDir, vec4(0.0, 1.0, 0.0, 0.0), p2))
+        {
+            hit = true;
+            if (p2.w < p.w)
+            {
+                p = p2;
+                n = vec3(0.0, 1.0, 0.0);
+
+                float br = occlusion(p.xyz, n, -1, -1);
+                br *= dot(n, normalize(light0.xyz - p2.xyz));
+                color = vec4(br, br, br, 0.0);
+            }
+        }
+    }
+    
+    // walls
+    {
+    	vec4 walls[4] = vec4[](vec4(1.0, 0.0, 0.0, -5.0), vec4(-1.0, 0.0, 0.0, -5.0), vec4(0.0, 0.0, 1.0, -5.0), vec4(0.0, 0.0, -1.0, -5.0));
+    	vec4 p2;
+         
+        for (int i = 0; i < 4; i++)
+        {
+            if (Plane(rayOrigin, rayDir, walls[i], p2))
+            {
+                hit = true;
+                if (p2.w < p.w)
+                {
+                    p = p2;
+                    n = walls[i].xyz;
+                    float br = dot(n, normalize(light0.xyz - p2.xyz));
+                    color = vec4(br, br, br, 0.0);
+                }
+            }                  
+        }
+    }
+    
+    
+    // spheres
+    for (int i = 0; i < skull_cnt; i++)
+    {
+    	vec4 p2;
+        vec3 n2;
+        
+        if (Sphere(rayOrigin, rayDir, skull[i], p2, n2) || Sphere(rayOrigin, rayDir, skull[i] * vec4(-1.0, 1.0, 1.0, 1.0), p2, n2))
+        {
+            hit = true;
+            if (p2.w < p.w)
+            {
+                p = p2;
+                n = n2;
+                float f = pow(dot(rayDir, reflect(rayDir, n)) * 0.5 + 0.5, 3.0);
+                
+                float br = occlusion(p.xyz, n, i, -1);
+                f = f * 0.75 + br * 0.25;
+                color = vec4(f, f, f, 1.0);
+            }
+        }
+    }
+    
+    // tentacles
+    for (int i = 0; i < tentacle_cnt; i++)
+    {
+    	vec4 p2;
+        vec3 n2;
+        
+        if (Sphere(rayOrigin, rayDir, tentacle[i], p2, n2))
+        {
+            hit = true;
+            if (p2.w < p.w)
+            {
+                p = p2;
+                n = n2;
+                float f = pow(dot(rayDir, reflect(rayDir, n)) * 0.5 + 0.5, 3.0);
+                float br = occlusion(p.xyz, n, -1, i);
+                f = f * 0.25 + br * 0.75;
+                color = vec4(f, f, f, 1.0);
+            }
+        }
+    }
+    
+    
+    // light
+    {
+        vec4 p2;
+        vec3 l0 = light0.xyz - vec3( light0.w, 0.0,  light0.w);
+        vec3 l1 = light0.xyz - vec3(-light0.w, 0.0,  light0.w);
+        vec3 l2 = light0.xyz - vec3(-light0.w, 0.0, -light0.w);
+        vec3 l3 = light0.xyz - vec3( light0.w, 0.0, -light0.w);
+        
+        if (Triangle(rayOrigin, rayDir, l0, l1, l2, p2) || Triangle(rayOrigin, rayDir, l0, l2, l3, p2))
+        {
+            float br = 8.0;
+            color = vec4(br, br, br, 0.0);
+        }
+    }
+    
+	
+    return hit;
+}
+
+
+vec4 calc_pixel(vec3 rayOrigin, vec3 rayDir)
+{
+	vec4 p;
+    vec3 n;
+    vec3 color = vec3(1.0);
+    vec3 ro = rayOrigin;
+    vec3 rd = rayDir;
+    //float a = 1.0;
+    
+    for (int i = 0; i < max_depth; i++)
+    {
+        vec4 hitCol;
+    	bool hit = scene(ro, rd, p, n, hitCol);
+        
+        if (hit)
+        {
+            //color *= mix(vec3(1.0), hitCol.rgb, a);
+            color *= hitCol.rgb;
+            rd = normalize(reflect(rd, n));
+            ro = p.xyz + rd * 0.0001;
+            //a = a * hitCol.a;
+            if (hitCol.a < 0.5) break;
+        }
+        else
+        {
+            color = vec3(0.0);
+            break;
+        }
+    }
+    
+	return vec4(color * exposure, 1.0);
+}
+
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord ) 
+{
+	vec4 color = vec4(0.0);
+    vec2 plane = -1.0 + 2.0 * (fragCoord.xy / iResolution.xy);
+ 	plane.y *= (9.0 / 16.0);
+ 	plane *= planeScale;
+    float r = float(focalBlurSteps) * 0.5;
+    float a = 1.0 / (3.14159 * r * r);
+    //float vignette = length(plane) * 6.0;
+    //vignette = 1.0 - vignette * vignette;
+    
+    for (int y = 0; y < focalBlurSteps; y++)
+    {
+        float yy = float(y) - float(focalBlurSteps - 1) / 2.0;
+        
+        for (int x = 0; x < focalBlurSteps; x++)
+    	{
+            float xx = float(x) - float(focalBlurSteps - 1) / 2.0;
+            
+            if (xx * xx + yy * yy <= r * r)
+            {
+                vec3 cp = camPos;
+                vec3 forward = normalize(target - cp);
+                vec3 right = cross(forward, vec3(0.0, 1.0, 0.0));	
+                vec3 up = cross(forward, right);
+                cp = cp + xx * focalBlurStep * right + yy * focalBlurStep * up;
+                forward = normalize(target - cp);
+
+                vec3 rayOrigin = cp - right * plane.x - up * plane.y + forward * planeDistance;
+                vec3 rayDir = normalize(rayOrigin - cp);
+                color += calc_pixel(rayOrigin, rayDir) * vec4(1.0 - yy * 0.1, 1.0, 1.0 - xx * 0.1, 1.0);
+            }
+            
+        }
+    }
+    
+     
+    fragColor = color * a;// * vignette;
+}
