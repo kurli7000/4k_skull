@@ -1,4 +1,4 @@
 # 4K executable graphics, GLSL realtime raytracing
-4k Framework borrowed from https://github.com/armak/Leviathan-2.0
-Unity project for editing the "mesh"
+4k Framework borrowed from https://github.com/armak/Leviathan-2.0<br/>
+Unity project for editing the "mesh"<br/><br/>
 ![image](screenshot.png)
