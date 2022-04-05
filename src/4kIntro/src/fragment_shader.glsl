@@ -12,11 +12,11 @@ const float exposure = 0.8;
 const float planeDistance = 0.1;
 const float cameraDistance = 2.5;
 const float planeScale = 0.07;
-const vec3 camPos = vec3(1.0, 0.4, cameraDistance);
+//const vec3 camPos = vec3(1.0, 0.4, cameraDistance);
 const vec3 target = vec3(0.0, 0.5, 0.75);
 const int max_depth = 10;
 const vec4 light0 = vec4(0.0, 5.0, 0.0, 2.0);
-const int focalBlurSteps = 16;
+const int focalBlurSteps = 1;
 const float focalBlurStep = 0.003;
 
 
@@ -136,7 +136,7 @@ bool scene(vec3 rayOrigin, vec3 rayDir, out vec4 p, out vec3 n, out vec4 color)
                     sh += SphereShadowFloor(p2.xyz, b);
                     sh += SphereShadowFloor(p2.xyz, b * vec4(-1.0, 1.0, 1.0, 1.0));
                 }
-                
+               
                 for (int i = 0; i < int(fpar[0].z); i++)
                 {
                     sh2 += SphereShadowFloor(p2.xyz, ball(i, 0.75));
@@ -279,6 +279,8 @@ void main()
     //float vignette = length(plane) * 6.0;
     //vignette = 1.0 - vignette * vignette;
     
+    vec3 camPos = vec3(fpar[0].w, 0.4, cameraDistance);
+
     for (int y = 0; y < focalBlurSteps; y++)
     {
         float yy = float(y) - float(focalBlurSteps - 1) / 2.0;
@@ -303,6 +305,6 @@ void main()
             
         }
     }
-     
+ 
     fragColor = color * a;// * vignette;
 }

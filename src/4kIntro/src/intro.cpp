@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #include <math.h>
+#include <time.h>
 #include "config.h"
 #include "ext.h"
 #include "vertex_shader.inl"
@@ -347,12 +348,19 @@ bool render(bool final)
 #else
 	glBindProgramPipeline(renderingPipeline);
 
-	fparams[0] = (float)skull_cnt;
-	fparams[1] = 1.0f / (float)skull_cnt;
+	float t = clock() / 1000.0f;
+
+	glBindProgramPipeline(renderingPipeline);
+	fparams[0] = (float)(skull_cnt / 4) + 1.0;
+	fparams[1] = 1.0f / (float)(skull_cnt / 4);
+	fparams[2] = (float)(stuff_cnt / 4) + 1.0;
+	fparams[3] = sin(t * 0.3f);
+
 	glBindTexture(GL_TEXTURE_2D, tex1);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glProgramUniform4fv(fragmentShader, 0, 4, fparams);
+
 	glRects(-1, -1, 1, 1); 
 	return true;
 #endif

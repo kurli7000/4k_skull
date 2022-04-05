@@ -184,7 +184,7 @@ int WINAPI WinMain( HINSTANCE instance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     info->hInstance = GetModuleHandle( 0 );
 
-	//if( MessageBox( 0, "fullscreen?", info->wndclass, MB_YESNO|MB_ICONQUESTION)==IDYES ) info->full++;
+	if( MessageBox( 0, "fullscreen?", info->wndclass, MB_YESNO|MB_ICONQUESTION)==IDYES ) info->full++;
 
     if( !window_init(info) )
     {
@@ -216,8 +216,6 @@ int WINAPI WinMain( HINSTANCE instance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		    TranslateMessage( &msg );
             DispatchMessage( &msg );
         }
-
-		Sleep(10);
     }
 
     window_end( info );

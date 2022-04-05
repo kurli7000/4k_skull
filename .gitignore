@@ -1,2 +1,5 @@
 .idea.sh*
 *.asm
+src/.vs*
+src/4kIntro/bin*
+src/4kIntro/exe*
