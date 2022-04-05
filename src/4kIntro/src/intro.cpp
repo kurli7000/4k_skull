@@ -351,6 +351,7 @@ bool render(bool final)
 	float t = clock() / 1000.0f;
 
 	glBindProgramPipeline(renderingPipeline);
+
 	fparams[0] = (float)(skull_cnt / 4) + 1.0;
 	fparams[1] = 1.0f / (float)(skull_cnt / 4);
 	fparams[2] = (float)(stuff_cnt / 4) + 1.0;

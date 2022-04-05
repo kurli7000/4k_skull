@@ -12,7 +12,7 @@ const char *fragment_shader_glsl =
  "in vec2 p;"
  "const float v=1e-06,e=1e+06,z=.8,w=.1,o=2.5,n=.07;"
  "const vec3 f=vec3(0.,.5,.75);"
- "const int i=10;"
+ "const int i=4;"
  "const vec4 d=vec4(0.,5.,0.,2.);"
  "const int t=1;"
  "const float s=.003;"
